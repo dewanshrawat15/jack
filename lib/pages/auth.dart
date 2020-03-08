@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 import 'dart:async';
+import 'package:ssh/ssh.dart';
+
+import 'package:jack/pages/home.dart';
+import 'package:jack/utils/details.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -9,7 +13,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  String _authorized = 'Not Authorized';
   int counter = 0;
 
   Future _authenticate() async{
@@ -17,10 +20,25 @@ class _AuthScreenState extends State<AuthScreen> {
     try {
       var localAuth = LocalAuthentication();
       authenticated = await localAuth.authenticateWithBiometrics(
-        localizedReason: 'Limited attempts'
+        localizedReason: "Authenticate user for Dewansh's MacBook Air"
       );
     } on PlatformException catch (e){
       print(e);
+    }
+    if(authenticated){
+      var client = new SSHClient(
+        host: host,
+        port: 22,
+        username: username,
+        passwordOrKey: password,
+      );
+      await client.connect();
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => HomeScreen(client: client,)
+        )
+      );
     }
   }
 
