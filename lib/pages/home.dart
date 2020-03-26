@@ -153,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderRadius: BorderRadius.circular(24),
                 child: GestureDetector(
                   onTap: () async{
-                    widget.client.execute(
+                    await widget.client.execute(
                       "./unlockscreen.sh"
                     );
                   },
@@ -195,8 +195,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderRadius: BorderRadius.circular(24),
                 child: GestureDetector(
                   onTap: () async{
-                    widget.client.execute(
-                      "./lockscreen.sh"
+                    await widget.client.execute(
+                      "pmset displaysleepnow"
                     );
                   },
                   child: Card(
@@ -230,7 +230,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-
               SizedBox(
                 height: 32,
               ),
