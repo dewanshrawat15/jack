@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssh/ssh.dart';
 import 'manageVolumeLevels.dart';
+import 'terminalCard.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -156,6 +157,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(24),
                 child: VolumeMangementCard(
+                  client: widget.client
+                )
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: TerminalCommandsCard(
                   client: widget.client
                 )
               ),
