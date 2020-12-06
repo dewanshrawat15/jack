@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssh/ssh.dart';
 import 'manageVolumeLevels.dart';
-import 'terminalCard.dart';
+import '../utils/details.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: GestureDetector(
                   onTap: () async{
                     await widget.client.execute(
-                      "./unlockscreen.sh"
+                      './unlockscreen.sh'
                     );
                   },
                   child: Card(
@@ -157,15 +157,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(24),
                 child: VolumeMangementCard(
-                  client: widget.client
-                )
-              ),
-              SizedBox(
-                height: 32,
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(24),
-                child: TerminalCommandsCard(
                   client: widget.client
                 )
               ),
