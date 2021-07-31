@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ssh/ssh.dart';
 import 'manageVolumeLevels.dart';
-import '../utils/details.dart';
 
 class HomeScreen extends StatefulWidget {
 
